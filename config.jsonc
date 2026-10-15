@@ -1,0 +1,117 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+
+    "modules-left": [
+        "battery", 
+        "clock",
+        "memory",
+        "cpu",],
+
+
+        "modules-center": ["hyprland/workspaces"],
+
+        "modules-right": [
+            "pulseaudio", 
+            "custom/spotify",
+            "backlight", 
+            "network",
+            "bluetooth", 
+            "custom/lock", 
+        ],
+
+        "hyprland/workspaces": {
+            "disable-scroll": true,
+            "sort-by-name": true,
+            "format": " {name} {icon} ",
+            "format-icons": {
+                "1":"󰈹",
+                "9":"",
+                "default": "", 
+                "empty": "",
+            },
+            "persistent-workspaces":{"*":[1,2,3,4,9]}
+        },
+
+
+        "clock": {
+            "timezone": "Ameria/Sao_Paulo",
+            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+            "format-alt": "󰃭 {:%d/%m/%Y}",
+            "format": " {:%H:%M}"
+        },
+        "backlight": {
+            "device": "intel_backlight",
+            "format": "{icon}",
+            "format-icons": ["", "", "", "", "", "", "", "", ""]
+        },
+        "battery": {
+            "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+            },
+            "format": "{capacity}% {icon}",
+            "format-full": "{capacity}% {icon}",
+            "format-charging": "{capacity}% ",
+            "format-plugged": "{capacity}% ",
+            "format-alt": "{time} {icon}",
+            "format-icons": ["", "", "", "", ""]
+        },
+        "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "default": ["", "", " "]
+        },
+        "on-click": "pavucontrol"
+        },
+        "custom/lock": {
+            "tooltip": false,
+            "on-click": "hyprlock",
+            "format": "",
+        },
+        "memory":{
+            "interval": 0.1,
+            "format":" | {percentage}%",
+            "on-click": "kitty -e btop"
+        },
+        "cpu":{
+            "interval":1,
+            "format":" | {usage}%",
+            "on-click": "kitty -e btop"
+        },
+        "network": {
+            "format-icons": [
+                "󰤯",
+                "󰤟",
+                "󰤢",
+                "󰤥",
+                "󰤨"
+            ],
+            "format": "{icon}",
+            "format-wifi": "{icon}",
+            "format-ethernet": "󰌗",
+            "format-disconnected": "󰤮",
+            "format-disconnected": "Disconnected ⚠",
+            "on-click": "kitty -e  nmtui"
+        },
+        "bluetooth": {
+            "format-on": "󰂯",
+            "format-off": "󰂲",
+            "format-disabled": "󰂲", // an empty format will hide the module
+            "format-connected": "󰂱 {num_connections}",
+            "tooltip-format-connected": "{device_enumerate}",
+            "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+            "on-click": "kitty -e bluetui"
+        },
+
+        "custom/spotify": {
+            "return-type": "",
+            "escape":false,
+            "tooltip":false,
+            "exec": ".config/waybar/modules/custom-spotify.sh",
+           "on-click": "playerctl -p spotify play-pause",
+        }
+}

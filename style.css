@@ -1,15 +1,15 @@
-@import "mocha.css";
+@import "../themes/mocha/mocha.css";
 
 * {
   font-family: JetBrainsMono Nerd Font;
-  font-size: 14px;
+  font-size: 12px;
   min-height: 0;
 }
 
 #waybar {
   background: transparent;
   color: @text;
-  margin: 5px 5px;
+  margin: 0px 0px;
 }
 
 #workspaces {
@@ -44,9 +44,10 @@
 #network,
 #bluetooth,
 #custom-lock,
+#custom-spotify,
 #custom-power {
   background-color: @surface0;
-  padding: 0.5rem 1rem;
+  padding: 0rem 0.7rem;
   margin: 5px 0;
 }
 
@@ -62,6 +63,10 @@
 #clock {
   color: @blue;
   border-radius: 0px 1rem 1rem 0px;
+}
+
+#custom-spotify{
+  color: @green;
 }
 
 #battery {
